@@ -23,8 +23,8 @@ class CopyRepository {
     add(copie, bookId) {
         checkSubmission(copie);
         copie.id = uuid();
-        
-        this.db.push('/books['+bookId+']', copie);
+        const bookPath = this.bookRepository.getIdPath(bookId);
+        this.db.push(bookPath+'/copies', copie);
 
         return copie;
     }
