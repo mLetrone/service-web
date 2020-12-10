@@ -36,6 +36,10 @@ class CopyRepository {
 
     get(id, bookId) {
         const book = this.bookRepository.get(bookId);
+        const bookPath = this.bookRepository.getIdPath(bookId);
+        if (bookPath == null) {
+            throw new ValidationError('This book does not exists')
+        }
         return _.find(book.copies, { id });
     }
 
@@ -53,6 +57,7 @@ class CopyRepository {
         this.db.push(path, copie);
 
         return book;
+        return copie;
     }
 
     delete(id, bookId) {
