@@ -25,7 +25,7 @@ const userController = new UserController(userRepository);
 
 
 const copyRepository = new CopyRepository(db, bookRepository);
-const copyController = new CopyController(userRepository);
+const copyController = new CopyController(copyRepository);
 
 // Création du serveur
 const app = express();
