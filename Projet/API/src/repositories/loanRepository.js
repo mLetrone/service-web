@@ -32,15 +32,16 @@ class LoanRepository {
     }
 
     add(loan) {
-        checkSubmission(loan);
+        checkLoan(loan);
         loan.id = uuid();
-
+        
         const loans = this.getAll();
-
+        const users = this.db.getData("/users");
+        
         if(_.find(users, {id: loan.userId}) === undefined){
             throw new ValidationError('This user does not exist.');
         }
-
+        
         const copy = this.copyRepository.get(loan.copyId, loan.bookId);
         if (copy === undefined) {
             throw new ValidationError('This copy does not exist.');
@@ -52,7 +53,7 @@ class LoanRepository {
 
         this.db.push('/loans[]', loan);
 
-        return copie;
+        return loan;
     }
 
     get(id) {
