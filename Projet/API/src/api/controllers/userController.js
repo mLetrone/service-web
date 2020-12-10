@@ -19,7 +19,7 @@ class UserController {
         if (user == null) {
             res.status(404).send(null);
         } else {
-            res.status(200).send(book);
+            res.status(200).send(user);
         }
     }
 
