@@ -32,6 +32,11 @@ class UserController {
         this.userRepository.delete(req.params.userId);
         res.status(204).send(null);
     }
+
+    getLoans(req, res){
+        this.userRepository.getLoans(req.params.userId);
+        res.status(204).send(null);
+    }
 }
 
 module.exports = UserController;
