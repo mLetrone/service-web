@@ -29,7 +29,7 @@ class CopyRepository {
         checkSubmission(copie);
         copie.id = uuid();
         const bookPath = this.bookRepository.getIdPath(bookId);
-        this.db.push(bookPath+'/copies', copie);
+        this.db.push(bookPath+'/copies[]', copie);
 
         return copie;
     }
