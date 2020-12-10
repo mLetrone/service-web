@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 // Import de nos objets
 const bookRoutes = require('./api/routes/bookRoutes');
 const userRoutes = require('./api/routes/userRoutes');
+const copyRoutes = require('./api/routes/copyRoutes')
 
 const BookController = require('./api/controllers/bookController');
 const BookRepository = require('./repositories/bookRepository');
