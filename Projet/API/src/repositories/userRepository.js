@@ -21,7 +21,7 @@ class UserRepository {
     }
 
     add(user) {
-        checkBook(user);
+        checkUser(user);
         user.id = uuid();
         user.copies = []; // initialize empty copy array
         this.db.push("/users[]", user);
@@ -39,7 +39,7 @@ class UserRepository {
             throw new ValidationError('You cannot change the identifier.');
         }
 
-        checkBook(user);
+        checkUser(user);
         const path = this.getIdPath(id);
         if (path == null) {
             throw new ValidationError('This user does not exists');
