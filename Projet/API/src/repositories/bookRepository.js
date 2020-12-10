@@ -31,6 +31,13 @@ class BookRepository {
         return _.find(books, { id });
     }
 
+    getLoans(id) {
+        const book = this.get(id);
+        const loans = this.db.getData("/loans");
+        return _.filter(loans, { bookId: book.id });
+
+    }
+
     update(id, book) {
         if (book.id !== id) {
             throw new ValidationError('You cannot change the identifier.');

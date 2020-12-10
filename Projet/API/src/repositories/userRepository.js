@@ -33,6 +33,13 @@ class UserRepository {
         return _.find(users, { id });
     }
 
+    getLoans(id){
+        const user = this.get(id);
+        const loans = this.db.getData("/loans");
+        return _.filter(loans, {userId: user.id});
+
+    }
+
     update(id, user) {
         if (user.id !== id) {
             throw new ValidationError('You cannot change the identifier.');
