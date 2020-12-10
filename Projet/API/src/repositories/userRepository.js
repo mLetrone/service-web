@@ -23,7 +23,6 @@ class UserRepository {
     add(user) {
         checkUser(user);
         user.id = uuid();
-        user.copies = []; // initialize empty copy array
         this.db.push("/users[]", user);
 
         return user;
