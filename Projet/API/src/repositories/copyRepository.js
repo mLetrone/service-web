@@ -1,3 +1,8 @@
+
+const { v4: uuid } = require('uuid');
+const _ = require('lodash');
+const ValidationError = require('./validationError');
+
 const checkSubmission = function (book) {
     if (!book.submissionDate) {
         throw new ValidationError('The copie must have a submission date.');
