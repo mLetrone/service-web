@@ -5,6 +5,5 @@ module.exports = function (app, loanController) {
 
     app.route('/loans/:loanID')
         .get(loanController.get.bind(loanController))
-        .put(loanController.update.bind(loanController))
         .delete(loanController.delete.bind(loanController));
 }

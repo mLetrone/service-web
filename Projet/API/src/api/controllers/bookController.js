@@ -32,6 +32,11 @@ class BookController {
         this.bookRepository.delete(req.params.bookId);
         res.status(204).send(null);
     }
+
+    getLoans(req, res) {
+        this.bookRepository.getLoans(req.params.bookId);
+        res.status(204).send(null);
+    }
 }
 
 module.exports = BookController;
