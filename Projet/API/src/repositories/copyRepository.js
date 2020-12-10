@@ -1,3 +1,10 @@
+const checkSubmission = function (book) {
+    if (!book.submissionDate) {
+        throw new ValidationError('The copie must have a submission date.');
+    }
+}
+
+
 class CopyRepository {
     constructor(db, bookRepository) {
         this.db = db;
@@ -12,6 +19,45 @@ class CopyRepository {
 
         return this.db.getData(bookPath + '/copies');
     }
+
+    add(copie, bookId) {
+        checkSubmission(copie);
+        copie.id = uuid();
+        
+        this.db.push('/books['+bookId+']', copie);
+
+        return copie;
+    }
+
+    get(id, bookId) {
+        const book = this.bookRepository.get(bookId);
+        return _.find(book.copies, { id });
+    }
+
+    update(id, copie, bookId) {
+        if (copie.id !== id) {
+            throw new ValidationError('You cannot change the identifier.');
+        }
+
+        checkSubmission(copie);
+        const path = this.getIdPath(bookId, id);
+        if (path == null) {
+            throw new ValidationError('This copie does not exists');
+        }
+
+        this.db.push(path, copie);
+
+        return book;
+    }
+
+    delete(id, bookId) {
+        const path = this.getIdPath(bookId, id);
+        if (path != null) {
+            this.db.delete(path);
+        }
+
+    }
+
     
     getIdPath(bookId, id) {
         const copies = this.getAll(bookId);
