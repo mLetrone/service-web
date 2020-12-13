@@ -7,6 +7,6 @@ module.exports = function (app, userController) {
         .get(userController.get.bind(userController))
         .put(userController.update.bind(userController))
         .delete(userController.delete.bind(userController));
-    app.route('/users/:userId/loads')
+    app.route('/users/:userId/loans')
         .get(userController.getLoans.bind(userController));
 }

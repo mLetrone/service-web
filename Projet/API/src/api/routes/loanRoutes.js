@@ -3,7 +3,7 @@ module.exports = function (app, loanController) {
         .get(loanController.getAll.bind(loanController))
         .post(loanController.create.bind(loanController));
 
-    app.route('/loans/:loanID')
+    app.route('/loans/:loanId')
         .get(loanController.get.bind(loanController))
         .delete(loanController.delete.bind(loanController));
 }
