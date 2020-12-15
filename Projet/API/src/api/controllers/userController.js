@@ -34,8 +34,12 @@ class UserController {
     }
 
     getLoans(req, res){
-        this.userRepository.getLoans(req.params.userId);
-        res.status(204).send(null);
+        const loans = this.userRepository.getLoans(req.params.userId);
+        if(loans == null){
+          res.status(204).send(null);
+        } else {
+          res.status(200).send(loans);
+        }
     }
 }
 
