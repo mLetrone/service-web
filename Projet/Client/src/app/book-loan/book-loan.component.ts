@@ -4,6 +4,7 @@ import { tap } from 'rxjs/operators';
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import {formatDate } from '@angular/common';
 
 import { Book } from '../model/book';
 import { Copy } from '../model/copy';
@@ -46,7 +47,9 @@ export class BookLoanComponent implements OnInit {
     this.ngxSmartModalService.getModal('loanModal').close();
 
     if (event.user && event.isValidated) {
-      this.loanService.loan(this.loanCopyId, event.user.id)
+      const date= new Date();
+      const dateStr = formatDate(date, 'dd/MM/yyyy hh:mm:ss', 'fr-FR');
+      this.loanService.loan( event.user.id,this.loanCopyId, this.bookId, dateStr)
         .pipe(
           tap(() => this.router.navigateByUrl('/users'))
         )
