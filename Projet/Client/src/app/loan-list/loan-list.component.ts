@@ -22,4 +22,8 @@ export class LoanListComponent implements OnInit {
     this.loans$ = this.loanService.getAll()
   }
 
+  public return(id: string) {
+    this.loanService.return(id);
+  }
+
 }

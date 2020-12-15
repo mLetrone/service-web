@@ -18,7 +18,7 @@
         <p class="card-text">{{loan.bookId}}</p>
 
         <a
-          [routerLink]="'/loans'"
+        (click)="return(loan.id)"
           class="btn btn-outline-primary"
         >Return</a>
       </div>
