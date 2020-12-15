@@ -48,7 +48,7 @@ export class BookLoanComponent implements OnInit {
 
     if (event.user && event.isValidated) {
       const date= new Date();
-      const dateStr = formatDate(date, 'dd/MM/yyyy hh:mm:ss', 'fr-FR');
+      const dateStr = formatDate(date, 'dd/MM/yyyy', 'en-US');
       this.loanService.loan( event.user.id,this.loanCopyId, this.bookId, dateStr)
         .pipe(
           tap(() => this.router.navigateByUrl('/users'))

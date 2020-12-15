@@ -13,14 +13,13 @@
     <div class="card mb-3">
       <div class="card-body">
         <h5 class="card-title">User</h5>
-        <p class="card-text">{{loan.userId}}</p>
+        <p class="card-text">{{loan.userName}}</p>
         <h5 class="card-title">Book</h5>
-        <p class="card-text">{{loan.bookId}}</p>
-
-        <a
-        (click)="return(loan.id)"
+        <p class="card-text">{{loan.bookName}}</p>
+        <button
+          (click)="return(loan.id)"
           class="btn btn-outline-primary"
-        >Return</a>
+        >Return</button>
       </div>
     </div>
   </div>
