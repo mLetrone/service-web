@@ -23,6 +23,6 @@ export class LoanService extends BaseHttpService {
   }
   return(loanId: string): Observable<Loan> {
     return this.http
-        .delete<Loan>(`${this.baseUrl}/loan/${loanId}`);
+        .delete<Loan>(`${this.baseUrl}/loans/${loanId}`);
   }
 }
