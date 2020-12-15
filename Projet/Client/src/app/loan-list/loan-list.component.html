@@ -1,1 +1,28 @@
-<p>loan-list works!</p>
+<button
+  class="btn btn-primary mb-3"
+  (click)="init()"
+>Refresh</button>
+<div
+  class="row"
+  *ngIf="loans$ | async as loans"
+>
+  <div
+    *ngFor="let loan of loans"
+    class="col-lg-6"
+  >
+    <div class="card mb-3">
+      <h4 class="card-header">
+        {{loan.bookId}}
+      </h4>
+      <div class="card mb-3">
+        <h4 class="card-header">
+          {{loan.UserId}}
+        </h4>
+        <a
+          [routerLink]="'/loans'"
+          class="btn btn-outline-primary"
+        >Return</a>
+      </div>
+    </div>
+  </div>
+</div>
