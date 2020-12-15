@@ -94,7 +94,7 @@ this.copyService.getAvailable(book.id)
 
 On récupère les exemplaires disponibles pour chaque livres puis on ajoute ces exemplaires à l'objet `book`. Notez que cette implémentation n'est pas très efficace d'un point de vue réseau. En effet, nous devons faire un appel réseau supplémentaire pour chaque livre afin de récupérer ses examplaires. Si cette liste était longue, nous aurions énormémet d'appels concurrents, ce qui ralentirait grandement la vitesse de chargement de la page. C'est ce qu'on appelle l'under-fetching (nous ne récupérons pas toutes les informations nécessaires sur la ressource `books` en un seul appel).
 
-Note: l'appel à la fonction `.subscribe()` est nécessaire ici pour déclancher la requête HTTP. Précédemment c'était le code `| async` dans les fichiers HTML qui le faisait pour nous.
+Note: l'appel à la fonction `.sub   scribe()` est nécessaire ici pour déclancher la requête HTTP. Précédemment c'était le code `| async` dans les fichiers HTML qui le faisait pour nous.
 
 ### Liste des emprunts
 
