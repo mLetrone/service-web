@@ -20,7 +20,6 @@ export class LoanListComponent implements OnInit {
 
   public init() {
     this.loans$ = this.loanService.getAll()
-          .subscribe();
   }
 
 }

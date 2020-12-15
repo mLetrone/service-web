@@ -11,13 +11,12 @@
     class="col-lg-6"
   >
     <div class="card mb-3">
-      <h4 class="card-header">
-        {{loan.bookId}}
-      </h4>
-      <div class="card mb-3">
-        <h4 class="card-header">
-          {{loan.UserId}}
-        </h4>
+      <div class="card-body">
+        <h5 class="card-title">User</h5>
+        <p class="card-text">{{loan.userId}}</p>
+        <h5 class="card-title">Book</h5>
+        <p class="card-text">{{loan.bookId}}</p>
+
         <a
           [routerLink]="'/loans'"
           class="btn btn-outline-primary"
