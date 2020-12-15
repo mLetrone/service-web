@@ -18,7 +18,7 @@ class BookRepository {
     }
 
     add(book) {
-        checkBook(book); 
+        checkBook(book);
         book.id = uuid();
         book.copies = []; // initialize empty copy array
         this.db.push("/books[]", book);
@@ -34,7 +34,8 @@ class BookRepository {
     getLoans(id) {
         const book = this.get(id);
         const loans = this.db.getData("/loans");
-        return _.filter(loans, { bookId: book.id });
+        const copies = this.db.getData(this.getIdPath(id) + '/copies');
+        return _.filter(copies, ({ id }) => !_.some(loans, { copyId: id }));
 
     }
 
@@ -43,7 +44,7 @@ class BookRepository {
             throw new ValidationError('You cannot change the identifier.');
         }
 
-        checkBook(book); 
+        checkBook(book);
         const path = this.getIdPath(id);
         if (path == null) {
             throw new ValidationError('This book does not exists');
@@ -59,7 +60,7 @@ class BookRepository {
         if (path != null) {
             this.db.delete(path);
         }
-        
+
     }
 
     getIdPath(id) {
