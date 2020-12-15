@@ -7,10 +7,10 @@ import { BaseHttpService } from './baseHttpService';
 
 @Injectable()
 export class LoanService extends BaseHttpService {
-  loan(copyId, userId): Observable<void> {
+  loan(userId: string, copyId: string, bookId: string, loanDate: string): Observable<void> {
     return this.http
         // trouver les paramètres pour le loan
-        .post<void>(`${this.baseUrl}/`,{})
+        .post<void>(`${this.baseUrl}/loans`, {'userId': userId, 'copyId': copyId, 'bookId': bookId, 'loanDate': loanDate} )
       .pipe(
         map(() => null),
         catchError((err) => { console.log(err); return null; })
